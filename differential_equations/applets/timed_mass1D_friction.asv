@@ -1,0 +1,83 @@
+
+% TIMER CALLBACK CODE - MATLAB CENTRAL
+% Sachitha Obeysekara:
+% <SNIP has time in his/her mind...
+% 
+% one of the solutions using a timer callback is outlined 
+% below
+%%- note: use <stop(th)> BEFORE you delete the plot...
+% this can be done in the command window
+clear all
+close all
+clc
+
+%initialize the falcon
+% global h
+h = haptikdevice;
+fprintf('Falcon Initialized\n\n')
+pos = read_position(h);
+
+i=1;
+t=0;
+dt=.05;
+tmax=10;
+
+%define the model parameters
+mass=2;    %kg
+Fx=0;        %N
+
+mu=0.5;      %coefficient of friction
+Nf=mass*9.8; %Normal force
+
+% prepare the plot
+ axes('xlim',[-100,100],'ylim',[-100,100]);
+%initial conditions
+vx(1)=0; 
+vy(1)=0; 
+xm=0;
+ym=0;
+theta(i)=0;
+ 
+%   %find theta based on current and previous point    
+ 
+ lm=line(xm,ym,...
+        'userdata',1,...
+        'marker','.',...
+        'color','red',...
+        'markersize',5,...
+        'linestyle','none');
+ shg;   
+% prepare a simple timer function
+ tfun=[
+        'pos = read_position(h);'...
+        'Fx=pos(1)*Ffct;'...
+        'Fy=pos(2)*Ffct;'...
+        'ax=(Fx)/mass;'...
+        'ay=(Fy)/mass;'...
+        'vx(i+1)=vx(i)+ax*dt;'...
+        'vy(i+1)=vy(i)+ay*dt;'...
+        'xm=[xm xm(i)+vx(i)*dt];'...
+        'ym=[ym ym(i)+vy(i)*dt];'...
+        'theta(i+1)=atan2(ym(i+1)-ym(i),xm(i+1)-xm(i));'...
+        't=t+dt;'...
+        'i=i+1;'...
+        'write(h,[-Fx -Fy 0]);'...
+        'set(lm,''ydata'',ym);'...
+        'set(lm,''xdata'',xm);'...
+];
+% create the timer
+ th=timer;
+ set(th,...
+    'timerfcn',tfun,...
+    'period',dt,...
+    'executionmode','fixedrate');
+% ...and start it
+
+start(th);
+% while(t<tmax);
+% end
+%    
+% % clean up
+% stop(th);
+% delete(th);
+% close(h)

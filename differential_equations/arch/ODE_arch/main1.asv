@@ -1,0 +1,34 @@
+%% ME3001-001 Mechanical Engineering Analysis
+%
+% Tristan Hill 7/9/2014
+%
+% Solving Ordinary Differential Equations 
+% and Modeling Mechanical Systems
+%
+% Mass - Spring - Damper - Free Damped Vibration 
+%%
+clc; clear all; close all
+
+% define the system parameters
+m=10; %kg 
+k=10; %N/m
+c=15; %N*s/m
+
+alpha=-.75;
+beta = .66;
+
+beta=sqrt(c^2-4*m*k)/(2*m)
+
+c1=2;
+c2=-4.55;
+
+n=100;
+tmax=10;
+t=linspace(0,tmax,n);
+
+for i=1:n
+    x(i)=exp(alpha*t(i))*(c1*cos(beta*t(i))+c2*sin(beta*t(i)));
+end
+
+figure(1)
+plot(t,x)

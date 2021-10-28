@@ -1,0 +1,10 @@
+function err=catCable25(T)
+    
+    errSum=0;
+    for k=1:length(x_meas)
+        ytest=T/w*cosh(w/T*x_meas(k))+y0-T/w;
+        err=(y_meas(k)-ytest);
+        errSum=errSum+err^2;
+    end
+    err=sqrt(err);
+end

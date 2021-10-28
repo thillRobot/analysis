@@ -1,0 +1,9 @@
+
+
+
+function xdot=orbit(t,x)
+    xdot= [x(2)
+           x(1)*x(4)^2-4*pi^2/x(1)^2;
+           x(4)
+           -2*x(2)*x(4)/x(1)];
+end
