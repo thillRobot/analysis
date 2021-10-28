@@ -1,0 +1,61 @@
+
+%% 
+% ME3001-001, 6/5/2014, Tristan Hill 
+% 
+% Finding Roots of non-Linear Equations
+% 
+% Newton Raphson Method%
+%%
+
+clear all;
+close all;
+
+xmin=-1;   %search from xmin to xmax
+xmax=1;
+delx=.01;
+x=xmin:delx:xmax; % from xmin to xmax, in steps of delx
+
+% define anonymous functions here
+% myFun=@(in) -12-21*in+18*in^2-2.75*in^3;
+% myDFun=@(in) -21+2*18*in-3*2.75*in^2;
+
+myFun=@(in) sin(3*in)-2*in^2;
+myDFun=@(in) 3*cos(3*in)-4*in;
+
+for i=1:length(x)
+    f(i)=myFun(x(i));
+end
+
+tol=.001;
+hold on 
+figure(1);
+plot(x,f);
+grid on
+% axis([xmin xmax -2 2])
+searching=1;
+
+% x0=(xmax-xmin)/2; %initital guess
+x0=.50;
+xn=x0;
+
+plot([xmin xmax] ,[0 0],'r')
+
+idx=1;
+while(searching)
+
+    xnn=xn-myFun(xn)/myDFun(xn)
+    plot(xn,myFun(xn),'b*')
+    plot(xnn,0,'g*')
+    plot([xn xnn],[myFun(xn) 0],'r')
+   
+    xn=xnn; %prev=curr
+
+    if abs(myFun(xn))<tol;
+        searching=0;
+        root=xn;
+        disp('tolerance reached, ending the search')
+        fprintf('the root was found at x=%.3f',root)
+    end
+    idx=idx+1;
+pause
+end

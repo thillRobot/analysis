@@ -1,0 +1,15 @@
+function out=myDFun(in,opt)
+    
+    if opt==1
+        %out=-12-21*in+18*in^2-2.75*in^3; function
+        out=-21+2*18*in-3*2.75*in^2;    %d/dx of function
+    elseif opt==2
+        %out=exp(5*in)-15;  ; function
+        out=5*exp(5*in);     %d/dx of function
+    elseif opt==3
+        out=sin(1/in);  
+    elseif opt==4
+        out=-(csc;  
+
+        
+    end

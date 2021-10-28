@@ -1,0 +1,29 @@
+
+
+%% playing with functions
+
+
+xmin=-5;
+xmax=10;
+xdel=.5;
+
+x=xmin:xdel:xmax;
+
+for i=1:length(x)
+    x(i);
+    f1(i)=fun1(x(i));
+    f2(i)=fun2(x(i));
+end
+
+
+plot(x,f1,'*',x,f2,'d')
+
+
+s0=sign(f1(j)-f2(j));
+while(sign(f1(j)-f2(j))
+    
+end
+    
+x
+f1
+f2

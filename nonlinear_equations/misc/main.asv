@@ -1,0 +1,63 @@
+% Determine the roots of f(x)=-12-21x+18x^2-2.75x^3 graphically.
+% Determing the first root with the incremental search method,
+% starting at x=-1 with a step size of .1 
+
+% Tristan Hill 6/3/2014
+% modified from Mike Renfro and Mike Renfro, 2014/05/23
+
+clear all;
+close all;
+
+% Graphical method
+x=-2:0.01:6; % from -2 to 6, in steps of 0.01
+f1=-12-21*x+18*x.^2-2.75*x.^3;% notice the element wise (point wise) operator
+figure(1);
+plot(x,f1);
+grid on;
+
+% Grapical method (alternative)
+for i=1:length(x)
+    f2(i) = myPoly(x(i));
+end
+figure(2);
+plot(x,f2);
+grid on;
+
+
+% Incremental search method
+x=-1;
+dx=0.1;
+f=-12-21*x+18*x^2-2.75*x^3;
+x_next=x+dx;
+f_next=-12-21*x_next+18*x_next^2-2.75*x_next^3;
+while sign(f)==sign(f_next)
+    x=x_next;
+    f=-12-21*x+18*x^2-2.75*x^3;
+    x_next=x+dx;
+    f_next=-12-21*x_next+18*x_next^2-2.75*x_next^3;
+end
+fprintf('Found a root between x=%.1f and x=%.1f\n',x,x_next);
+
+
+%incremental search method (alternative)
+x=-2:0.01:6; % from -2 to 6, in steps of 0.01
+idx=1;
+while sign(myPoly(x(idx)))==sign(myPoly(x(idx+1)))
+    idx=idx+1;
+end
+disp('test')
+fprintf('Found a root between x=%.3f and x=%.3f\n',x(idx),x(idx+1));
+
+%fzero() method
+root=fzero(@myPoly,-2);
+fprintf('The fzero() method found a root at x=%.3f',root);
+
+%roots() method, polynomial array based
+myFun=[-2.75 18 -21 -12];
+root=roots(myFun)
+
+
+
+
+
+
