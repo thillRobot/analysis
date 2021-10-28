@@ -1,0 +1,17 @@
+%% 
+% ME 3001-001 , Tristan Hill, 6/9/2014, Summer 2014
+%
+% Systems of Simulataneous Linear Equations 
+%
+% Round off Error Examples
+%% 
+
+xmin=-5;
+xmax=5;
+xstep=.1;
+
+x=xmin:xstep:xmax;
+
+y1=(3-x)/.001;
+
+y2=5-2.*x2;

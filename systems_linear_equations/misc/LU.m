@@ -1,0 +1,73 @@
+%% ME 3001-001, Mechanical Engineering Analysis
+%   
+%   Systems of Linear Equations
+%   Solving Systems with [L][U] decomposition
+%
+%%
+close all
+clear all
+clc
+
+% A=[7 4 2 2
+%    1 8 4 3
+%    3 1 9 4
+%    6 7 8 1]
+
+% %Chapra and Canale - example 11.1 - tridiagonal system
+A=[2.04 -1    0     0 
+   -1   2.04 -1     0
+   0    -1    2.04  -1
+   0    0    -1     2.04];
+b=[40.8; 0.8; 0.8; 200.8];
+
+%Chapra and Canale - example 10.2 - solving with LU decomp
+
+% A=[3   -0.1 -0.2       % coefficent matrix
+%    0.1  7   -0.3
+%    0.3  -0.2    10 ];
+% 
+% b=[7.85; -19.3; 71.4]; % vector of knowns
+
+n=length(A(1,:)); %dimension of square matrix
+
+L=eye(n); % creates a identity matrix with dimension n
+
+% decompose into L and U (lower and upper diag.)
+% (Doolittle Decomposition)
+for i=1:n-1
+    for j=i+1:n
+        fact=A(j,i)/A(i,i);
+        L(j,i)=fact;
+        for k=i:n
+            A(j,k)=A(j,k)-A(i,k)*fact;
+        end
+    end
+end
+U=A
+L
+L*U
+%now that A has been decomposed, we can solve for {d}
+
+%forward substitute to find d
+d(1)=b(1); %solve the first eq. out of the loop
+for i=2:n
+    sum=0;
+    for j=1:i-1
+        sum=sum+d(j)*L(i,j);
+    end
+    d(i)=b(i)-sum;
+end
+
+%now back substitute to find x
+x(n)=d(n)/U(n,n); %solve the last eq. out of the loop
+for i=1:n-1
+    sum=0;
+    for j=n-i+1:n
+        sum = sum + U(n-i,j)*x(j);
+    end
+    x(n-i)=(d(n-i)-sum)/U(n-i,n-i);   
+end
+
+
+
+
