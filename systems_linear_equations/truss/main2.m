@@ -7,7 +7,7 @@
 
 P=100; % single point load on the truss
 
-% compute reactin forces
+% compute reaction forces
 
 RAx=0;
 RAy=(1/5)*P;

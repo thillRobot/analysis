@@ -14,11 +14,9 @@ b=[4;6;15;2]   %vector of knowns
 % A=A_b(:,1:3);
 % b=A_b(:,4);
 
-x_check=inv(A)*b
+x_check=inv(A)*b;
 
-% [A,b]=partial_pivot(A,b);
-A
-b
+% [A,b]=partial_pivot(A,b); % dont use partial pivoting
 
 [m,n]=size(A);
 %% perform the forward elimination on A
@@ -47,6 +45,7 @@ for i=1:n-1 %notice the (n-1) to count backwards
     x((n-i))=ssum/A((n-i),(n-i));
 end
 x
+x_check
 
     
    

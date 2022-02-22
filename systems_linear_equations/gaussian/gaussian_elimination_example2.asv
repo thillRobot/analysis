@@ -1,7 +1,7 @@
 %%
 % TTU - ME 3001 - Mechanical Engineering Analysis
 % Tristan Hill - 6/29/2016 - Updated: 09/28/2020
-% Gaussian Elmination - with Partial Pivoting - Example 2
+% Gaussian Elmination - Naive - Example 2
 %%
 clear variables;clc
 
@@ -14,9 +14,6 @@ b=[4;6;15;2]   %vector of knowns
 x_check=inv(A)*b;
 
 [A,b]=partial_pivot(A,b); % use partial pivoting before 
-
-A
-b
 
 [m,n]=size(A);
 %% perform the forward elimination on A
@@ -45,7 +42,7 @@ for i=1:n-1 %notice the (n-1) to count backwards
     x((n-i))=ssum/A((n-i),(n-i));
 end
 x
-x_check
+
 
     
    

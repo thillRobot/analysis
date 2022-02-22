@@ -19,7 +19,7 @@ P=150; %load in kN (N*10^3)
 t= 40*deg2rad;% truss angle
 tp=90*deg2rad;% angle of load
 % calculate reaction forces at pins on pylons
-Ry1=P*/2;
+Ry1=P/2;
 Rx1=0;
 
 maxStr=0;
@@ -42,9 +42,8 @@ for t=0:.1:pi/4
      % define vector of knowns, b
  
     b=[-Ry1 ;Rx1 ; 0; P*cos(tp); P*sin(tp); 0; 0] ;
- 
-x
-x= A\b;
+    x= A\b
+    
     if abs(max(x))>abs(maxStr)
         maxStr=max(x);
         maxT=t;
