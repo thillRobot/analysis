@@ -1,6 +1,6 @@
 %%
 % ME 3001 - Mechanical Engineering Analysis
-% THIS DOES NOT APPEAR TO BE WORKING CURRENTLY
+% THIS DOES NOT APPEAR TO BE WORKING CURRENTLY - fix pivoting
 %%
 
 clear all

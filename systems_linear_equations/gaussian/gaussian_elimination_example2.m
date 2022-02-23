@@ -7,7 +7,7 @@ clear variables;clc
 
 A=[1 2.6 1 5  %test matrix
    14 3 -13 12
-   3 12 2  23
+   -93 12 2  23
    3 4 67 1]
 b=[4;6;15;2]   %vector of knowns
 
