@@ -7,10 +7,10 @@
 close all; clear all; clc
 
 %% plot for graphical verification
-x=-5:0.1:5;
+x=-.1:0.01:.1;
 for i=1:length(x)
 
-    y(i)=x(i)^3-5*x(i)^2+10;
+    y(i)=x(i)^3-0.165*x(i)^2+3.993e-4;
     
 end
 
@@ -19,12 +19,12 @@ plot(x,y)
 grid on
 
 %% solve with the Newton-Raphson Method
-xo=0.1;
+xo=-0.1;
 x_guess=xo;
 
 for i=1:10
 
-    x_guess=x_guess-(x_guess^3-5*x_guess^2+10)/(3*x_guess^2-10*x_guess);
+    x_guess=x_guess-(x_guess^3-5*x_guess^2+10)/(3*x_guess^2-2*0.165*x_guess);
 
 end
 

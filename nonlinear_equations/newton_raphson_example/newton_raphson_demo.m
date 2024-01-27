@@ -26,7 +26,9 @@ grid on
 tol=.001;
 
 % choose intial guess
-x0=input('Enter a starting location (x value): ');
+x0=input('Enter a starting location (x value): '); % user input can be nice, 
+% but it can be a pain too...
+% x0=0.1 % harcdcode the initial guess to save time testing
 x_curr=x0; % start the search and save the initial guess
 fprintf('Starting Newton-Raphson Method\n')
 cnt=1;
@@ -50,8 +52,9 @@ fprintf('The root was found at x=%.3f\n',x_curr)
 fprintf('The function value is f(%.3f)=%.5f\n',x_curr,example_fun(x_curr))
 
 %% double check with the FZERO function
-root_check=fzero(@example_fun,x0)
-
+root_check=fzero(@example_fun,x0)  % try from where the previous searched started
+root_check=fzero(@example_fun,3.0) % try from somewhere else to catch another root
+root_check=fzero(@example_fun,4.0) % and again to catch the third
 
 %% define functions below
 
