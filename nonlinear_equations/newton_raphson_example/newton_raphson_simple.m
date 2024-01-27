@@ -1,6 +1,6 @@
 %% 
 % ME3001 - Tennessee Technological University
-% Tristan Hill, September 12, 2019 - September 04, 2020
+% Tristan Hill, September 12, 2019 - September 04, 2020 - January 27, 2024
 % Module 2 - Non Linear Equations
 % Topic 3 - Newton Raphson Method - Example 1
 %%
@@ -29,6 +29,3 @@ for i=1:10
 end
 
 root=x_guess
-
-%% double check with the FZERO function
-root_check=fzero(@(x_check) x_check^3-0.165*x_check^2+3.993e-4,xo)
