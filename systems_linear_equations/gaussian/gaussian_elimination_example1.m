@@ -1,6 +1,6 @@
 %%
 % TTU - ME 3001 - Mechanical Engineering Analysis
-% Tristan Hill - 6/29/2016 - Updated: 09/28/2020
+% Tristan Hill - 6/29/2016 - Updated: 09/28/2020, 02/22/2024
 % Gaussian Elmination - Naive - Example 1
 %%
 clear variables;clc
@@ -10,13 +10,9 @@ A=[1 2.6 1 5  %test matrix
    3 12 2  23
    3 4 67 1]
 b=[4;6;15;2]   %vector of knowns
-  %vector of knowns
-% A=A_b(:,1:3);
-% b=A_b(:,4);
 
+% check with matrix inverse
 x_check=inv(A)*b;
-
-% [A,b]=partial_pivot(A,b); % dont use partial pivoting
 
 [m,n]=size(A);
 %% perform the forward elimination on A
