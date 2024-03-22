@@ -1,6 +1,6 @@
 %%
 % TTU - ME 3001 - Mechanical Engineering Analysis
-% Tristan Hill - 6/29/2016
+% Tristan Hill - 6/29/2016 - 02/22/2024
 % Gaussian Elmination - with Pivoting - Example 2
 %%
 clear variables;clc

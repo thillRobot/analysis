@@ -8,8 +8,8 @@ close all
 clear all
 clc
 
-xrange=[0 10]; % range of IND. var
-iv=[0 0];     % intitial dependent var vals
+xrange=[0 20]; % range of IND. var
+iv=[5 0];     % intitial dependent var vals
 
 [xs ys]=ode45(@mySys,xrange,iv);
 
