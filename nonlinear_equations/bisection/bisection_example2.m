@@ -26,7 +26,7 @@ end
 
 figure(1);hold on 
 plot(x,y);
-plot(x,y_B,'k','LineWidth',1.0);hold on
+% plot(x,y_B,'k','LineWidth',1.0);hold on
 plot(x,zeros(1,length(x)),'k','LineWidth',1.0)
 
 title('Bisection Method - Example 2')
