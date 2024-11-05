@@ -1,6 +1,6 @@
 %% ME 3001 - Mechanical Engineeing Analysis
 %
-% Tristan Hill - 7/22/2015 -03/20/2017 -  - modified from Dr. Han
+% Tristan Hill - 7/22/2015 -03/20/2017 - 03/27/2024 - modified from Dr. Han
 %
 % Fourier Series Approximation of Square Wave
 %% 

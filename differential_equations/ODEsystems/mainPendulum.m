@@ -1,4 +1,4 @@
-%% ME 3001 - Spring 2015
+%% ME 3001 - Spring 2024
 % Tristan Hill - solving a system of 1st order ODEs 
 % 
 %%

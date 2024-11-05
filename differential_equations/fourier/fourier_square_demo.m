@@ -14,18 +14,18 @@ x=-5*pi:0.01*pi:5*pi;
 sum=0; %initialize the sum
 
 %calculate the Sigma Series part of the function
-n=100;
+n=1000;
 sum=0
     
 for i=1:n
     
-    sum=sum+(1-cos(i*pi))*sin(i*x)/i
-    B=4
-    g=(1-cos(i*pi))*sin(i*x)/i*2*B/pi
+    sum=sum+(1-cos(i*pi))*sin(i*x)/i;
+    B=4;
+    g=(1-cos(i*pi))*sin(i*x)/i*2*B/pi;
     f=sum*2*B/pi; %multiply by bn
     
     
-% plot(x,g)
+%  plot(x,g)
     
 grid on
 %     pause
