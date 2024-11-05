@@ -7,29 +7,88 @@
 clear; clc; close all
 
 % example from pg 482
-h1=1.5 % x steps
-h2=2.5
-h3=2.0
+% define x values
+x=[3.0, 4.5, 7.0, 9.0]
+n=length(x); 
 
-x1=3.0 % x values
-x2=4.5
-x3=7.0
-x4=9.0
+% calculate h values (x steps)
+for i=1:n-1
+    h(i)=x(i+1)-x(i);
+end
+h
 
-f1=2.5 % y values
-f2=1.0
-f3=2.5
-f4=0.5
+% define function values (y)
+f=[2.5, 1.0, 2.5, 0.5]
 
-A=[1, 0, 0, 0    % coefs matrix to solve for the Cs
-   h1, 2*(h1+h2), h2, 0
-   0,  h2, 2*(h2+h3), h3
+% equation 18.27 (tri-diagonal matrix system)
+A_tridiag=[1, 0, 0, 0    % coefs matrix to solve for the Cs
+   h(1), 2*(h(1)+h(2)), h(2), 0
+   0,  h(2), 2*(h(2)+h(3)), h(3)
    0,  0,         0,  1]
-b=[0             % knowns   
-   3*(fdiff(f3,f2,x3,x2)-fdiff(f2,f1,x2,x1))
-   3*(fdiff(f4,f3,x4,x3)-fdiff(f3,f2,x3,x2))
+b_tridiag=[0             % knowns   
+   3*(fdiff(f(3),f(2),x(3),x(2))-fdiff(f(2),f(1),x(2),x(1)))
+   3*(fdiff(f(4),f(3),x(4),x(3))-fdiff(f(3),f(2),x(3),x(2)))
    0]
-c=inv(A)*b
+
+c=inv(A_tridiag)*b_tridiag % solve for the Cs of all eqs simulaneously
+
+% solve for each b and each d
+for i=1:n-1
+    b(i)=(f(i+1)-f(i))/h(i)-h(i)/3*(2*c(i)+c(i+1))
+    d(i)=(c(i+1)-c(i))/(3*h(i))
+end
+
+a=x
+% the as are known as the xs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 % basic finite difference method
 function df=fdiff(fi,fj,xi,xj)
